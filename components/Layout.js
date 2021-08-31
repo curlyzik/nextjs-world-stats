@@ -4,7 +4,7 @@ import Link from "next/link";
 import Footer from "./Footer";
 import Image from "next/image";
 
-const Layout = ({ children, title = "World Statistic" }) => {
+const Layout = ({ children, title = "World Statistics" }) => {
   return (
     <div className="p-8 min-h-screen grid grid-rows-3-auto max-w-7xl mx-auto">
       <Head>
