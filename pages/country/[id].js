@@ -20,7 +20,7 @@ const Country = ({ country }) => {
 
   useEffect(() => {
     getBorder();
-  }, []);
+  }, [country]);
 
   return (
     <Layout>
