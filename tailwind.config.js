@@ -7,9 +7,15 @@ module.exports = {
       gridTemplateRows: {
         "3-auto": "auto 1fr auto",
       },
+      gridTemplateColumns: {
+        border: "repeat(auto-fill, minmax(120px, 1fr))",
+      },
+    },
+    flex: {
+      4: "4 4 0%",
     },
     fontFamily: {
-      body: ["Poppins", "sans-serif"],
+      body: ["Comfortaa"],
     },
   },
   variants: {

@@ -1,7 +1,6 @@
 import axios from "axios";
-import Head from "next/head";
 import { useState } from "react";
-import CountryTable from "../components/CountryTable";
+import Card from "../components/CountryCard";
 import Layout from "../components/Layout";
 import Search from "../components/Search";
 
@@ -21,16 +20,16 @@ export default function Home({ countries }) {
     setKeyword(e.target.value.toLowerCase());
   };
   return (
-    <div className="p-6 min-h-screen grid grid-rows-3-auto">
+    <>
       <Layout>
         <div className=" my-3 mx-0 text-gray-500">{countries.length} found</div>
         <Search
-          placeholder="Filter by Name, Region or Subregion"
+          placeholder="Filter by N7ame, Region or Subregion"
           onChange={onInputChange}
         />
-        <CountryTable countries={filterCountry} />
+        <Card countries={filterCountry} />
       </Layout>
-    </div>
+    </>
   );
 }
 
