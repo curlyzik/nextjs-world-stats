@@ -7,7 +7,7 @@ const Search = ({ ...rest }) => {
       <HiSearch className=" text-gray-400" />
       <input
         {...rest}
-        className=" p-4 w-full h-full bg-transparent outline-none placeholder-gray-400"
+        className="p-4 w-full h-full bg-transparent outline-none placeholder-gray-400"
       />
     </div>
   );

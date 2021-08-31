@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "./Footer";
+import Image from "next/image";
 
 const Layout = ({ children, title = "World Statistic" }) => {
   return (
@@ -10,8 +11,17 @@ const Layout = ({ children, title = "World Statistic" }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="flex justify-center items-center mb-8">
-        <Link href="/">Logo</Link>
+      <header className="flex gap-2 justify-center items-center mb-12">
+        <Link href="/">
+          <a href="">
+            <Image src="/logo.png" width="40" height="40" />
+          </a>
+        </Link>
+        <Link href="/">
+          <a className="text-2xl font-bold text-green-600">
+            World Statistics
+          </a>
+        </Link>
       </header>
       <main className="">{children}</main>
       <Footer />

@@ -22,11 +22,15 @@ export default function Home({ countries }) {
   return (
     <>
       <Layout>
-        <div className=" my-3 mx-0 text-gray-500">{countries.length} found</div>
-        <Search
-          placeholder="Filter by Name, Region or Subregion"
-          onChange={onInputChange}
-        />
+        <div className="grid md:grid-cols-2">
+          <div className=" my-3 mx-0 text-gray-400">
+            {countries.length} countries found
+          </div>
+          <Search
+            placeholder="Filter by Name, Region or Subregion"
+            onChange={onInputChange}
+          />
+        </div>
         <Card countries={filterCountry} />
       </Layout>
     </>
