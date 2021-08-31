@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
+import Link from "next/link";
 
 const getCountry = async (id) => {
   const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
@@ -26,7 +27,12 @@ const Country = ({ country }) => {
       <div className="md:grid md:grid-cols-12 gap-6">
         <div className="md:col-span-4 mb-6">
           <div className="rounded-lg shadow-md md:shadow-2xl overflow-hidden">
-            <img className="w-full" src={country.flag} alt={country.name} />
+            <img
+              className="w-full"
+              src={country.flag}
+              alt={country.name}
+              loading="lazy"
+            />
             <div className="p-5">
               <h1 className="text-center text-4xl font-bold mb-0">
                 {country.name}
@@ -98,12 +104,19 @@ const Country = ({ country }) => {
                     key={border.alpha3Code}
                     className="border-country text-center"
                   >
-                    <img
-                      className="w-full rounded"
-                      src={border.flag}
-                      alt={border.name}
-                    />
-                    <div className=" mt-3">{border.name}</div>
+                    <Link href={`/country/${border.alpha3Code}`}>
+                      <a>
+                        <img
+                          className="w-full rounded"
+                          src={border.flag}
+                          alt={border.name}
+                          loading="lazy"
+                        />
+                      </a>
+                    </Link>
+                    <Link href={`/country/${border.alpha3Code}`}>
+                      <a className=" mt-3">{border.name}</a>
+                    </Link>
                   </div>
                 ))}
               </div>

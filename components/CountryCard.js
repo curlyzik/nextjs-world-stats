@@ -15,7 +15,12 @@ const Card = ({ countries }) => {
             <div>
               <Link href={`country/${country.alpha3Code}`}>
                 <a>
-                  <img src={country.flag} alt="" className="w-full" />
+                  <img
+                    src={country.flag}
+                    alt=""
+                    className="w-full"
+                    loading="lazy"
+                  />
                 </a>
               </Link>
             </div>

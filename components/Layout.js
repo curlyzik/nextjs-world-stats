@@ -20,6 +20,7 @@ const Layout = ({ children, title = "World Statistic" }) => {
         <Link href="/">
           <a className="text-2xl font-bold text-green-600">
             World Statistics
+            <span className="text-gray-200 block text-xs">built with <span className=" grayscale-0 brightness-0 contrast-0 opacity-20">❤️</span> by || curlyzik</span>
           </a>
         </Link>
       </header>
