@@ -13,7 +13,7 @@ const Card = ({ countries }) => {
             className="rounded-xl overflow-hidden shadow-xl transform hover:shadow-2xl transition-shadow duration-500"
           >
             <div>
-              <Link href="/">
+              <Link href={`country/${country.alpha3Code}`}>
                 <a>
                   <img src={country.flag} alt="" className="w-full" />
                 </a>
@@ -21,7 +21,7 @@ const Card = ({ countries }) => {
             </div>
             <div className="p-6 flex flex-col">
               <h2 className="font-bold uppercase sm:text-2xl md:text-3xl md:capitalize">
-                <Link href="/">
+                <Link href={`country/${country.alpha3Code}`}>
                   <a>{country.name}</a>
                 </Link>
               </h2>

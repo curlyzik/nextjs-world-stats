@@ -24,7 +24,7 @@ export default function Home({ countries }) {
       <Layout>
         <div className=" my-3 mx-0 text-gray-500">{countries.length} found</div>
         <Search
-          placeholder="Filter by N7ame, Region or Subregion"
+          placeholder="Filter by Name, Region or Subregion"
           onChange={onInputChange}
         />
         <Card countries={filterCountry} />
