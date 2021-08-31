@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
 
 const getCountry = async (id) => {
   const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
@@ -26,7 +25,7 @@ const Country = ({ country }) => {
   return (
     <Layout>
       <div className="md:grid md:grid-cols-12 gap-6">
-        <Fade bottom cascade>
+
           <div className="md:col-span-4 mb-6">
             <div className="rounded-lg shadow-md md:shadow-2xl overflow-hidden">
               <img
@@ -63,9 +62,7 @@ const Country = ({ country }) => {
               </div>
             </div>
           </div>
-        </Fade>
 
-        <Fade right cascade>
           <div className="md:col-span-8">
             <div className="shadow-lg rounded-lg">
               <h4 className="p-5 pb-0 m-0 text-4xl font-semibold">Detail</h4>
@@ -127,7 +124,6 @@ const Country = ({ country }) => {
               </div>
             </div>
           </div>
-        </Fade>
       </div>
     </Layout>
   );
