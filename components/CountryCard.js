@@ -1,15 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoPeople } from "react-icons/io5";
 import { AiOutlineAreaChart } from "react-icons/ai";
 import Link from "next/link";
 import Fade from "react-reveal/Fade";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+
+const orderBy = (countries, direction, value) => {
+  if (direction === "asc") {
+    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
+  }
+
+  if (direction === "desc") {
+    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
+  }
+
+  return countries;
+};
+
+const ArrowSort = ({ direction }) => {
+  if (!direction) {
+    return <></>;
+  }
+
+  if (direction === "desc") {
+    return <MdKeyboardArrowDown className="text-lg" />;
+  } else {
+    return <MdKeyboardArrowUp className="text-lg" />;
+  }
+};
 
 const Card = ({ countries }) => {
+  const [value, setValue] = useState();
+  const [direction, setDirection] = useState();
+
+  const changeDirection = () => {
+    if (!direction) {
+      setDirection("desc");
+    } else if (direction === "desc") {
+      setDirection("asc");
+    } else {
+      setDirection(null);
+    }
+  };
+
+  const setValueAndDirection = (value) => {
+    setValue(value);
+    changeDirection();
+  };
+
+  const orderCountries = orderBy(countries, direction, value);
+  console.log(value);
   return (
     <div>
+      <div>
+        <p className="text-center mt-8 font-bold">Sort By</p>
+        <div className="flex items-center justify-around pt-5 text-gray-400 border-b pb-5">
+          <button
+            onClick={() => setValueAndDirection("name")}
+            className="hover:text-gray-600 transition duration-300 flex gap-2 items-center"
+          >
+            <div>Name</div>
+            <div>{value === "name" && <ArrowSort direction={direction} />}</div>
+          </button>
+
+          <button
+            onClick={() => setValueAndDirection("population")}
+            className="hover:text-gray-600 transition duration-300 flex gap-2 items-center"
+          >
+            <div>Population</div>
+            <div>
+              {value === "population" && <ArrowSort direction={direction} />}
+            </div>
+          </button>
+
+          <button
+            onClick={() => setValueAndDirection("area")}
+            className="hover:text-gray-600 transition duration-300 hidden md:flex gap-2 items-center"
+          >
+            <div>Area</div>
+            <div>{value === "area" && <ArrowSort direction={direction} />}</div>
+          </button>
+
+          <button
+            onClick={() => setValueAndDirection("gini")}
+            className="hover:text-gray-600 transition duration-300 hidden md:flex gap-2 items-center"
+          >
+            <div>Gini</div>
+            <div>{value === "gini" && <ArrowSort direction={direction} />}</div>
+          </button>
+        </div>
+      </div>
       <div className="grid justify-center items-center gap-x-9 gap-y-9 mt-8 sm:grid-cols-2 sm:items-stretch md:grid-cols-3 md:justify-start md:items-stretch">
-        {countries.map((country) => (
-          <Fade bottom cascade>
+        {orderCountries.map((country) => (
+          <Fade bottom cascade key={country.alpha3Code}>
             <div
               key={country.alpha3Code}
               className="rounded-xl overflow-hidden shadow-xl transform hover:shadow-2xl transition-shadow duration-500"
