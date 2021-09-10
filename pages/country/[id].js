@@ -45,7 +45,9 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.population || 0}
+                    {country.population
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0}
                   </div>
                   <div className="text-gray-500">Population</div>
                 </div>
@@ -53,7 +55,9 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.area || 0}
+                    {country.area
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0}
                   </div>
                   <div className="text-gray-500">Area</div>
                 </div>
