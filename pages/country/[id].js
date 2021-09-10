@@ -45,7 +45,7 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.population.toLocaleString("en-US") || 0}
+                    {country.population || 0}
                   </div>
                   <div className="text-gray-500">Population</div>
                 </div>
@@ -53,7 +53,7 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.area.toLocaleString("en-US") || 0}
+                    {country.area || 0}
                   </div>
                   <div className="text-gray-500">Area</div>
                 </div>
