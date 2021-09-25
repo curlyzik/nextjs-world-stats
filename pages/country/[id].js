@@ -47,9 +47,11 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.population
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0}
+                    {country.population && country.population === null
+                      ? country.population || 0
+                      : country.population
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0}
                   </div>
                   <div className="text-gray-500">Population</div>
                 </div>
@@ -57,8 +59,8 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.area === null
-                      ? country.area
+                    {country.area && country.area === null
+                      ? country.area || 0
                       : country.area
                           .toString()
                           .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || 0}
@@ -76,7 +78,9 @@ const Country = ({ country }) => {
 
             <div className="flex justify-between p-5 border-b  gap-4">
               <div className="text-gray-500">Capital</div>
-              <div className="font-semibold">{country.capital || 'No Capital'}</div>
+              <div className="font-semibold">
+                {country.capital || "No Capital"}
+              </div>
             </div>
 
             <div className=" flex justify-between p-5 border-b  gap-4">
@@ -90,8 +94,9 @@ const Country = ({ country }) => {
             <div className=" flex justify-between p-5 border-b  gap-4">
               <div className="panel-label text-gray-500">Currencies</div>
               <div className="font-semibold">
-                {country.currencies &&
-                  country.currencies.map(({ name }) => name).join(", ") || 'No Currency'}
+                {(country.currencies &&
+                  country.currencies.map(({ name }) => name).join(", ")) ||
+                  "No Currency"}
               </div>
             </div>
 
