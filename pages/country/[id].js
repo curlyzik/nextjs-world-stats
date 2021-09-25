@@ -50,10 +50,10 @@ const Country = ({ country }) => {
                     {!country.population
                       ? 0
                       : country.population
-                      ? country.population ||
-                        country.population
+                      ? country.population
                           .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",") ||
+                        country.population
                       : 0}
                   </div>
                   <div className="text-gray-500">Population</div>
@@ -65,10 +65,9 @@ const Country = ({ country }) => {
                     {!country.area
                       ? 0
                       : country.area
-                      ? country.area ||
-                        country.area
+                      ? country.area
                           .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",") || country.area
                       : 0}
                   </div>
                   <div className="text-gray-500">Area</div>
