@@ -105,7 +105,7 @@ const Country = ({ country }) => {
               <div className="text-gray-500 mb-5">Neighbouring Countries</div>
 
               <div className="grid grid-cols-border gap-6 mt-3">
-                {borders &&
+                {country.borders &&
                   borders.map((border) => (
                     <div
                       key={border.alpha3Code}
