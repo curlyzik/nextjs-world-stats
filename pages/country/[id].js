@@ -3,7 +3,7 @@ import Layout from "../../components/Layout";
 import Link from "next/link";
 
 const getCountry = async (id) => {
-  const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
+  const res = await fetch(`https://restcountries.com/v2/alpha/${id}`);
 
   const data = await res.json();
   return data;
@@ -29,7 +29,7 @@ const Country = ({ country }) => {
           <div className="rounded-lg shadow-md md:shadow-2xl overflow-hidden">
             <img
               className="w-full"
-              src={country.flag}
+              src={country.flags[0] || country.flags[1]}
               alt={country.name}
               loading="lazy"
             />
@@ -114,7 +114,7 @@ const Country = ({ country }) => {
                       <a>
                         <img
                           className="w-full rounded"
-                          src={border.flag}
+                          src={border.flags[0] || border.flags[1]}
                           alt={border.name}
                           loading="lazy"
                         />
@@ -135,7 +135,7 @@ const Country = ({ country }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("https://restcountries.eu/rest/v2/all");
+  const res = await fetch("https://restcountries.com/v2/all");
   const countries = await res.json();
 
   const paths = countries.map((country) => ({

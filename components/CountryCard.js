@@ -100,7 +100,7 @@ const Card = ({ countries }) => {
                 <Link href={`/country/${country.alpha3Code}`}>
                   <a>
                     <img
-                      src={country.flag}
+                      src={country.flags[0] || country.flags[1]}
                       alt=""
                       className="w-full"
                       loading="lazy"
@@ -121,7 +121,7 @@ const Card = ({ countries }) => {
                       Population
                     </span>{" "}
                     <span className="font-semibold">
-                      {country.population
+                      {country?.population
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </span>
@@ -144,13 +144,7 @@ const Card = ({ countries }) => {
                         Area m<sup className=" text-[10px]">2</sup>
                       </span>
                     </span>{" "}
-                    <span className="font-semibold">
-                      {country.area === null
-                        ? country.area
-                        : country.area
-                            .toString()
-                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                    </span>
+                    <span className="font-semibold">{country.area}</span>
                   </li>
                 </ul>
               </div>

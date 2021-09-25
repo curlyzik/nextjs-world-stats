@@ -38,7 +38,7 @@ export default function Home({ countries }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await axios.get("https://restcountries.eu/rest/v2/all");
+  const res = await axios.get("https://restcountries.com/v2/all");
   const { data } = res;
   return {
     props: {
