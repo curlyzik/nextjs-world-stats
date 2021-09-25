@@ -47,7 +47,7 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.population && country.population === null
+                    {country.population
                       ? country.population || 0
                       : country.population
                           .toString()
@@ -59,7 +59,7 @@ const Country = ({ country }) => {
                 <div className="">
                   <div className="font-semibold text-2xl">
                     {" "}
-                    {country.area && country.area === null
+                    {country.area
                       ? country.area || 0
                       : country.area
                           .toString()
