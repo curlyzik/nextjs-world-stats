@@ -12,10 +12,12 @@ const getCountry = async (id) => {
 const Country = ({ country }) => {
   const [borders, setBorders] = useState([]);
   const getBorder = async () => {
-    const border = await Promise.all(
-      country.borders.map((border) => getCountry(border))
-    );
-    setBorders(border);
+    if (country.borders) {
+      const border = await Promise.all(
+        country.borders.map((border) => getCountry(border))
+      );
+      setBorders(border);
+    }
   };
 
   useEffect(() => {
@@ -74,20 +76,22 @@ const Country = ({ country }) => {
 
             <div className="flex justify-between p-5 border-b  gap-4">
               <div className="text-gray-500">Capital</div>
-              <div className="font-semibold">{country.capital}</div>
+              <div className="font-semibold">{country.capital || 'No Capital'}</div>
             </div>
 
             <div className=" flex justify-between p-5 border-b  gap-4">
               <div className="panel-label text-gray-500">Language</div>
               <div className="font-semibold">
-                {country.languages.map(({ name }) => name).join(", ")}
+                {country.languages &&
+                  country.languages.map(({ name }) => name).join(", ")}
               </div>
             </div>
 
             <div className=" flex justify-between p-5 border-b  gap-4">
               <div className="panel-label text-gray-500">Currencies</div>
               <div className="font-semibold">
-                {country.currencies.map(({ name }) => name).join(", ")}
+                {country.currencies &&
+                  country.currencies.map(({ name }) => name).join(", ") || 'No Currency'}
               </div>
             </div>
 
@@ -105,27 +109,26 @@ const Country = ({ country }) => {
               <div className="text-gray-500 mb-5">Neighbouring Countries</div>
 
               <div className="grid grid-cols-border gap-6 mt-3">
-                {country.borders &&
-                  borders.map((border) => (
-                    <div
-                      key={border.alpha3Code}
-                      className="border-country text-center"
-                    >
-                      <Link href={`/country/${border.alpha3Code}`}>
-                        <a>
-                          <img
-                            className="w-full rounded"
-                            src={border.flags[0] || border.flags[1]}
-                            alt={border.name}
-                            loading="lazy"
-                          />
-                        </a>
-                      </Link>
-                      <Link href={`/country/${border.alpha3Code}`}>
-                        <a className=" mt-3">{border.name}</a>
-                      </Link>
-                    </div>
-                  ))}
+                {borders.map((border) => (
+                  <div
+                    key={border.alpha3Code}
+                    className="border-country text-center"
+                  >
+                    <Link href={`/country/${border.alpha3Code}`}>
+                      <a>
+                        <img
+                          className="w-full rounded"
+                          src={border.flags[0] || border.flags[1]}
+                          alt={border.name}
+                          loading="lazy"
+                        />
+                      </a>
+                    </Link>
+                    <Link href={`/country/${border.alpha3Code}`}>
+                      <a className=" mt-3">{border.name}</a>
+                    </Link>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

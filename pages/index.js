@@ -11,7 +11,7 @@ export default function Home({ countries }) {
     (country) =>
       country.name.toLowerCase().includes(keyword) ||
       country.region.toLowerCase().includes(keyword) ||
-      country.subregion.toLowerCase().includes(keyword)
+      country.continent.toLowerCase().includes(keyword)
   );
 
   const onInputChange = (e) => {
@@ -27,7 +27,7 @@ export default function Home({ countries }) {
             {countries.length} countries found
           </div>
           <Search
-            placeholder="Filter by Name, Region or Subregion"
+            placeholder="Filter by Name, Region or Continent"
             onChange={onInputChange}
           />
         </div>
