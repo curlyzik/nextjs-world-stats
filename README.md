@@ -28,6 +28,4 @@ You can run this project locally
 4. cd into folder and run the project
    ```sh
    npm run dev
-   ``
---->
-
+   ```
