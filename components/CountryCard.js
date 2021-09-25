@@ -121,9 +121,14 @@ const Card = ({ countries }) => {
                       Population
                     </span>{" "}
                     <span className="font-semibold">
-                      {country?.population
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                      {!country.population
+                        ? 0
+                        : country.population
+                        ? country.population ||
+                          country.population
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        : 0}
                     </span>
                   </li>
                   <li className="flex justify-between items-center">
@@ -144,7 +149,16 @@ const Card = ({ countries }) => {
                         Area m<sup className=" text-[10px]">2</sup>
                       </span>
                     </span>{" "}
-                    <span className="font-semibold">{country.area}</span>
+                    <span className="font-semibold">
+                      {!country.area
+                        ? 0
+                        : country.area
+                        ? country.area ||
+                          country.area
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        : 0}
+                    </span>
                   </li>
                 </ul>
               </div>
