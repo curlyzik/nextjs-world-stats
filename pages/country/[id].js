@@ -105,26 +105,27 @@ const Country = ({ country }) => {
               <div className="text-gray-500 mb-5">Neighbouring Countries</div>
 
               <div className="grid grid-cols-border gap-6 mt-3">
-                {borders.map((border) => (
-                  <div
-                    key={border.alpha3Code}
-                    className="border-country text-center"
-                  >
-                    <Link href={`/country/${border.alpha3Code}`}>
-                      <a>
-                        <img
-                          className="w-full rounded"
-                          src={border.flags[0] || border.flags[1]}
-                          alt={border.name}
-                          loading="lazy"
-                        />
-                      </a>
-                    </Link>
-                    <Link href={`/country/${border.alpha3Code}`}>
-                      <a className=" mt-3">{border.name}</a>
-                    </Link>
-                  </div>
-                ))}
+                {borders &&
+                  borders.map((border) => (
+                    <div
+                      key={border.alpha3Code}
+                      className="border-country text-center"
+                    >
+                      <Link href={`/country/${border.alpha3Code}`}>
+                        <a>
+                          <img
+                            className="w-full rounded"
+                            src={border.flags[0] || border.flags[1]}
+                            alt={border.name}
+                            loading="lazy"
+                          />
+                        </a>
+                      </Link>
+                      <Link href={`/country/${border.alpha3Code}`}>
+                        <a className=" mt-3">{border.name}</a>
+                      </Link>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
