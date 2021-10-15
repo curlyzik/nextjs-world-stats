@@ -32,7 +32,7 @@ const ArrowSort = ({ direction }) => {
 const Card = ({ countries }) => {
   const [value, setValue] = useState();
   const [direction, setDirection] = useState();
-
+  
   const changeDirection = () => {
     if (!direction) {
       setDirection("desc");
@@ -100,7 +100,7 @@ const Card = ({ countries }) => {
                 <Link href={`/country/${country.alpha3Code}`}>
                   <a>
                     <img
-                      src={country.flags[0] || country.flags[1]}
+                      src={country.flags.svg || country.flags.png}
                       alt=""
                       className="w-full"
                       loading="lazy"

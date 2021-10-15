@@ -31,7 +31,7 @@ const Country = ({ country }) => {
           <div className="rounded-lg shadow-md md:shadow-2xl overflow-hidden">
             <img
               className="w-full"
-              src={country.flags[0] || country.flags[1]}
+              src={country.flags.svg || country.flags.png}
               alt={country.name}
               loading="lazy"
             />
@@ -128,7 +128,7 @@ const Country = ({ country }) => {
                       <a>
                         <img
                           className="w-full rounded"
-                          src={border.flags[0] || border.flags[1]}
+                          src={border.flags.svg || border.flags.png}
                           alt={border.name}
                           loading="lazy"
                         />
