@@ -11,7 +11,7 @@ export default function Home({ countries }) {
     (country) =>
       country.name.toLowerCase().includes(keyword) ||
       country.region.toLowerCase().includes(keyword) ||
-      country.continent.toLowerCase().includes(keyword)
+      country.subregion.toLowerCase().includes(keyword)
   );
 
   const onInputChange = (e) => {
